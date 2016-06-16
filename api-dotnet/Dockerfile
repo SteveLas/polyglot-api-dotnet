@@ -5,7 +5,7 @@ WORKDIR /app
 # Copy the app
 COPY . .
 
-# Configure the listening port to 80
+# Configure the listening port to 5000
 ENV ASPNETCORE_URLS http://*:5000
 EXPOSE 5000
 
