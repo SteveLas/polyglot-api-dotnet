@@ -8,12 +8,13 @@ namespace ApiDotNet
     {
         public static void Main(string[] args)
         {
-            string port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+            // ASP.NET Core will support ASPNETCORE_URLS in RTM and this line can be removed then.
+            string url = Environment.GetEnvironmentVariable("ASPNETCORE_URLS") ?? "http://*:5000";
             
             var webHost = new WebHostBuilder().UseKestrel()
                                               .UseContentRoot(Directory.GetCurrentDirectory())                        
                                               .UseStartup<Startup>()
-                                              .UseUrls($"http://*:{port}")
+                                              .UseUrls(url)
                                               .Build();
 
             webHost.Run();
